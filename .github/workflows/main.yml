@@ -23,7 +23,9 @@ jobs:
           sudo chmod -R a+rwX /opt/ps5-payload-sdk
       - name: Compilar
         working-directory: upstream
-        run: PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk make
+        run: |
+          chmod +x install-libmicrohttpd.sh
+          PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk make
       - uses: actions/upload-artifact@v4
         with:
           name: FonSy-File-Manager
